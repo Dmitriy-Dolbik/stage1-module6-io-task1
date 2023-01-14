@@ -14,11 +14,11 @@ public class FileReader {
     }
 
     public Profile getDataFromFile(File file) {
-        String str = null;
+        StringBuilder str = new StringBuilder();
         try (FileInputStream fileInputStream = new FileInputStream(file)){
             int ch;
             while ((ch = fileInputStream.read()) != -1){
-                str = str + (char)ch;
+                str.append((char)ch);
             }
         }
         catch (FileNotFoundException e)
@@ -29,8 +29,8 @@ public class FileReader {
         {
             throw new RuntimeException(e);
         }
-        str = str.replace("null","");
-        String[] keyValuePairs = str.split("\r\n");
+        String input = str.toString();
+        String[] keyValuePairs = input.split("\r\n");
 
         for (int i = 0; i < keyValuePairs.length; i++)
         {
