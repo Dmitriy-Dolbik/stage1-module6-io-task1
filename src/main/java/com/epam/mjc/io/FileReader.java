@@ -2,7 +2,6 @@ package com.epam.mjc.io;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -23,7 +22,7 @@ public class FileReader
         {
             try
             {
-                throw new ReadingFileException("File cannot be reading",e);
+                throw new ReadingFileException("File cannot be reading", e);
             }
             catch (ReadingFileException ex)
             {
