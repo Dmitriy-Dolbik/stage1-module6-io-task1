@@ -33,18 +33,12 @@ public class FileReader
             throw new RuntimeException(e);
         }
 
-
         String input = str.toString();
-        String[] keyValuePairs = input.split("\r\n");
+        String[] keyValuePairs = input.split(System.lineSeparator());
 
         for (int i = 0; i < keyValuePairs.length; i++)
         {
-            try {
-                keyValuePairs[i] = keyValuePairs[i].split(": ")[1];
-            } catch (Exception e){
-
-            }
-
+            keyValuePairs[i] = keyValuePairs[i].split(": ")[1];
         }
         String name = keyValuePairs[0];
         int age = Integer.parseInt(keyValuePairs[1]);
