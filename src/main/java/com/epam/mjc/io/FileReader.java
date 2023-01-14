@@ -8,11 +8,6 @@ import java.io.IOException;
 
 public class FileReader
 {
-    public static void main(String[] args)
-    {
-        System.out.println(new FileReader().getDataFromFile(new File("G:\\My Drive\\IT\\Epam\\MJC School\\stage1-module6-io-task1\\src\\main\\resources\\Profile.txt")));
-    }
-
     public Profile getDataFromFile(File file)
     {
         StringBuilder str = new StringBuilder();
@@ -24,13 +19,16 @@ public class FileReader
                 str.append((char) ch);
             }
         }
-        catch (FileNotFoundException e)
-        {
-            throw new RuntimeException(e);
-        }
         catch (IOException e)
         {
-            throw new RuntimeException(e);
+            try
+            {
+                throw new ReadingFileException("File cannot be reading",e);
+            }
+            catch (ReadingFileException ex)
+            {
+                ex.printStackTrace();
+            }
         }
 
         String input = str.toString();
